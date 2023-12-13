@@ -11,6 +11,8 @@ public partial class ListPage : ContentPage
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var product = (Product)BindingContext;
+        Shop selectedShop = (ShopPicker.SelectedItem as Shop);
+        product.ID = selectedShop.ID;
         await App.Database.SaveProductAsync(product);
         listView.ItemsSource = await App.Database.GetProductsAsync();
     }
@@ -33,7 +35,13 @@ public partial class ListPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        var items = await App.Database.GetShopsAsync();
+        ShopPicker.ItemsSource = (System.Collections.IList)items;
+        ShopPicker.ItemDisplayBinding = new Binding("ShopDetails");
+
         var shopl = (ShopList)BindingContext;
+
 
         listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
     }

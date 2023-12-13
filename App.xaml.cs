@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 
+
 namespace Istoc_Oana_Lab7
 {
     public partial class App : Application

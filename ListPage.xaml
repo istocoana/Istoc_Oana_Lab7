@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Istoc_Oana_Lab7.ListPage"
              Title="ListPage">
-    <ContentPage.Content xmlns:local="clr-namespace:Istoc_Oana_Lab7">        <StackLayout Margin="20">
+    <ContentPage.Content xmlns:local="clr-namespace:Istoc_Oana_Lab7">
+        <StackLayout Margin="20">
             <Editor Placeholder="Enter the description of the shopping list" Text="{Binding Description}" HeightRequest="50" >
                 <Editor.Behaviors>
                     <local:ValidationBehaviour />
                 </Editor.Behaviors>
-            </Editor>
+            </Editor>
+            <Picker x:Name="ShopPicker" Title="Enter Shop Name"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
